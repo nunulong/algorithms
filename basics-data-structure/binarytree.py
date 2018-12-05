@@ -16,12 +16,12 @@ class Traverse(object):
 
     def inorder(self, root):
         if root:
-            self.inorder(self.left)
+            self.inorder(root.left)
             self.traverse_path.append(root.value)
-            self.inorder(self.right)
+            self.inorder(root.right)
 
     def postorder(self, root):
         if root:
-            self.postorder(self, root.left)
-            self.postorder(self, root.right)
+            self.postorder(root.left)
+            self.postorder(root.right)
             self.traverse_path.append(root.value)
