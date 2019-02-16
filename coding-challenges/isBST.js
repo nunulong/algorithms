@@ -16,7 +16,7 @@ class BSTNode {
     }
 }
 
-// inorder tranverse
+// inorder traverse
 // const isBST = (root) => {
 //     const inOrder = (node, arr) => {
 //         if (node) {
