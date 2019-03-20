@@ -1,12 +1,24 @@
 const findPermutations = (shortStr, longStr) => {
     const len = shortStr.length;
     const result = [];
-    const shortArr = shortStr.split('').sort().join('');
+
     for (let i = 0; i <= longStr.length - len; i++) {
         let str = longStr.substring(i, i + len);
-        let strArr = str.split('').sort().join('');
-        console.log(strArr, shortArr);
-        if (strArr === shortArr) {
+        let count = {};
+        for (let i = 0; i < len; i++) {
+            if (count[shortStr[i]] !== undefined) {
+                count[shortStr[i]]++;
+            } else {
+                count[shortStr[i]] = 1;
+            }
+        }
+        for (let i = 0; i < str.length; i++) {
+            if (count[str[i]]) {
+                count[str[i]]--;
+            }
+        }
+        let values = Object.values(count);
+        if (values.filter(x => x === 0).length === len) {
             result.push(str);
         }
     }
