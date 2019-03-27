@@ -6,16 +6,11 @@ const inorderSuccessor = (node) => {
     if (!node.right) {
         let p = node.parent;
         let n = node;
-        while (p) {
-            if (p.right == n) {
-                n = p;
-                p = p.parent;
-            }
-            if (p.left == n) {
-                return p;
-            }
+        while (p && p.left !== n) {
+            n = p;
+            p = p.parent;
         }
-        return null;
+        return p;
     }
 }
 
