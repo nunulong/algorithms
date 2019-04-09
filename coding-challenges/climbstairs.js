@@ -1,13 +1,13 @@
 const climbStairs = (n) => {
-    const helper = (i, n, arr) => {
-        if (i > n) return 0;
-        if (i === n) return 1;
-        if (arr[i] > 0) return arr[i];
-        arr[i] = helper(i + 1, n, arr) + helper(i + 2, n, arr);
-        return arr[i];
+    const helper = (n, cache) => {
+        if (n < 0) return 0;
+        if (n === 0) return 1;
+        if (cache[n] > 0) return cache[n];
+        cache[n] = helper(n - 1, cache) + helper(n - 2, cache) + helper(n - 3, cache);
+        return cache[n];
     }
     const arr = [];
-    return helper(0, n, arr);
+    return helper(n, arr);
 }
 
-console.log(climbStairs(4));
+console.log(climbStairs(30));
