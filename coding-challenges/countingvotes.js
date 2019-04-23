@@ -12,27 +12,19 @@ Analyze the time and space complexity of your solution.
 
 const countVotes = (arr) => {
     const obj = {};
-    for (let i = 0; i < arr.length; i++) {
-        if (obj[arr[i]]) {
-            obj[arr[i]]++;
-        } else {
-            obj[arr[i]] = 1;
-        }
-    }
-    let maxCount = 0;
-    for (name in obj) {
-        if (obj[name] > maxCount) {
-            maxCount = obj[name];
-        }
-    }
+    let maxVote = 0;
     let winner;
-    for (name in obj) {
-        if (obj[name] === maxCount) {
-            if (winner === undefined || winner < name) {
-                winner = name;
-            }
+    arr.forEach(vote => {
+        if (!obj[vote]) obj[vote] = 1;
+        obj[vote]++;
+
+        if (maxVote < obj[vote]) {
+            maxVote = obj[vote];
+            winner = vote;
+        } else if (maxVote === obj[vote]) {
+            if (vote > winner) winner = vote;
         }
-    }
+    });
     return winner;
 }
 
