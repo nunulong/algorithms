@@ -34,7 +34,6 @@ const onewayFlight = (tickets) => {
     for (let i = 1; i < flight.length; i++) {
         flight[i] = hash[flight[i - 1]];
     }
-
     return flight;
 }
 
