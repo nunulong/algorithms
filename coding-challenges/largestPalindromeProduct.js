@@ -8,7 +8,6 @@ const largestPalindromeProduct = () => {
         for (let j = i - 1; j > 99; j--) {
             if (isPalindrome(i * j) && result < i * j) {
                 result = i * j;
-                break;
             }
         }
     }
